@@ -1,1 +1,1 @@
-![screenshot1](./readme/2026-09-17.png)
+![screenshot1](./readmeSS/2026-09-17.png)
