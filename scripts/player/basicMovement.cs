@@ -9,20 +9,20 @@ public class basicMovement : MonoBehaviour
     private Rigidbody2D rb;
    
 
-    [SerializeField] private float spd = 6f;
+    private float spd = 6f;
     //jump mechanics
-    [SerializeField] private float jumpForce;
+    private float jumpForce = 8f;
     private bool isGrounded = true;
-    [SerializeField] private float fallMultiplier;
+    private float fallMultiplier;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 2.5f;
 
+        fallMultiplier = 1f; //basically default, for now
         //
-        jumpForce = 5f;
-        fallMultiplier = 2f;
     }
 
 
