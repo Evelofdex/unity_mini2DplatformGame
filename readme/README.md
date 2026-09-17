@@ -1,1 +1,0 @@
-![screenshot_September_17_2026](./2026-09-17.png)
