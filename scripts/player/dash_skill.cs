@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class dash_skill : MonoBehaviour
 {
+    public bool isDashing;
+    [SerializeField] private float dashDuration;
+    private float dashCooldownDuration = 1f;
+    private bool isCooldown_dash;
+
     private Rigidbody2D rb;
 
     [SerializeField] float dashForce;
@@ -12,6 +17,7 @@ public class dash_skill : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        isCooldown_dash = false;
 
         //
         dashForce = 10f;
@@ -20,15 +26,40 @@ public class dash_skill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.A) && !isCooldown_dash)
         {
-            rb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);   
-            Debug.Log("dashign");
+            StartCoroutine(dashLeft());
+            StartCoroutine(dashCooldown(dashCooldownDuration));
         }
-        if(Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.D))
+        if(Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.D) && !isCooldown_dash)
         {
-            rb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);   
-            Debug.Log("dashign");
+           StartCoroutine(dashRight());
+           StartCoroutine(dashCooldown(dashCooldownDuration));
         }
+    }
+
+    IEnumerator dashLeft()
+    {
+        rb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
+        Debug.Log("dashing");
+        isDashing = true;   
+        yield return new WaitForSeconds(0.5f);
+        isDashing = false;  
+        isCooldown_dash = true;
+    }
+    IEnumerator dashRight()
+    {
+        rb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
+        Debug.Log("dashing");
+        isDashing = true;
+        yield return new WaitForSeconds(0.5f);
+        isDashing = false;
+        isCooldown_dash = true;
+    }
+
+    IEnumerator dashCooldown(float cooldown)
+    {
+        yield return new WaitForSeconds(cooldown);
+        isCooldown_dash = false;
     }
 }

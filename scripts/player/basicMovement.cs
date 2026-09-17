@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class basicMovement : MonoBehaviour
 {
+    //dash mechanic
+    private dash_skill dashStatus;
+
 
     private Rigidbody2D rb;
    
@@ -18,6 +21,9 @@ public class basicMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //dashing things
+        dashStatus = GetComponent<dash_skill>();
+
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 2.5f;
 
@@ -36,7 +42,11 @@ public class basicMovement : MonoBehaviour
         if (!isGrounded && rb.velocity.y < 0)
         {
             rb.velocity = moveDirection + (Vector2.up *  (fallMultiplier * -1)); 
-        }
+        } 
+        else if (dashStatus.isDashing)
+        {
+            rb.velocity = rb.velocity; // default
+        } 
         else
         {
             rb.velocity = moveDirection; 
