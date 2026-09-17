@@ -41,7 +41,6 @@ public class basicMovement : MonoBehaviour
         {
             rb.velocity = moveDirection; 
         }
-        Debug.Log(rb.velocity.y);
     }
 
     // Update is called once per frame
