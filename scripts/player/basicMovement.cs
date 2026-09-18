@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class basicMovement : MonoBehaviour
 {
+    //from wall mechanic
+    private wallClimb_skill onWallStatus;
+
     //dash mechanic
     private dash_skill dashStatus;
 
@@ -21,6 +24,9 @@ public class basicMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //wall mechanic thinsg
+        onWallStatus = GetComponent<wallClimb_skill>();
+
         //dashing things
         dashStatus = GetComponent<dash_skill>();
 
@@ -56,6 +62,13 @@ public class basicMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //wall ability exclusive
+        if (onWallStatus.isOnWall && Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            Debug.Log("jump from wall");
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);

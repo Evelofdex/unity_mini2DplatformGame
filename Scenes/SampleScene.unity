@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 98054882}
   - component: {fileID: 98054881}
   - component: {fileID: 98054880}
+  - component: {fileID: 98054885}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -226,9 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc41795d407e95647b2f5a220f30ca28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spd: 0
-  jumpForce: 0
-  fallMultiplier: 0
 --- !u!212 &98054883
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -296,6 +294,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &98054885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98054879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ce9df71403dd44fbd9cb880d2a8d68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDashing: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
