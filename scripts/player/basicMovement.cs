@@ -51,7 +51,7 @@ public class basicMovement : MonoBehaviour
         {
             rb.velocity = moveDirection + (Vector2.up *  (fallMultiplier * -1)); 
         } 
-        else if (dashStatus.isDashing)
+        else if (dashStatus.isDashing || onWallStatus.isJumpFromWall)
         {
             rb.velocity = rb.velocity; // default
         } 
@@ -65,11 +65,7 @@ public class basicMovement : MonoBehaviour
     void Update()
     {
         //wall ability exclusive
-        if (onWallStatus.isOnWall && Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            Debug.Log("jump from wall");
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
