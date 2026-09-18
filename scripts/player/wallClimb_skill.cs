@@ -51,14 +51,14 @@ public class wallClimb_skill : MonoBehaviour
         {
             isJumpFromWall = true;
             StartCoroutine(wallJump(-1, jumpForceX, jumpForceY, jumpWallDuration));
-            Debug.Log("jump on right side");
+            // Debug.Log("jump on right side");
         }
 
         if (onLeftWall)
         {
             isJumpFromWall = true;
             StartCoroutine(wallJump(1, jumpForceX, jumpForceY, jumpWallDuration));
-            Debug.Log("jump on left side");
+            // Debug.Log("jump on left side");
         }
     }
 
