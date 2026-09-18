@@ -40,6 +40,8 @@ public class basicMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        transform.rotation = Quaternion.Euler(Vector3.zero);
+
         Vector2 direction = Vector2.zero;
         if (Input.GetKey(KeyCode.A)) direction += Vector2.left;
         if (Input.GetKey(KeyCode.D)) direction += Vector2.right;
